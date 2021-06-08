@@ -1,0 +1,41 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        prestation_image:
+            uri_prefix: /image/prestation
+            upload_destination: '%kernel.project_dir%/public/image/prestation'
+
+
+
+                #######################################
+
+        panorama_image:
+            uri_prefix: /image/panorama
+            upload_destination: '%kernel.project_dir%/public/image/panorama'
+
+                #######################################
+
+        utilisateur_image:
+            uri_prefix: /image/utilisateur
+            upload_destination: '%kernel.project_dir%/public/image/utilisateur'
+
+                #######################################
+
+        prestation_pdf:
+            uri_prefix: /pdf
+            upload_destination: '%kernel.project_dir%/public/pdf'
+
+            #######################################
+
+        commentaire_image:
+            uri_prefix: /image/commentaire
+            upload_destination: '%kernel.project_dir%/public/image/commentaire'
+
+
+
+
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'

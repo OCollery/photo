@@ -1,0 +1,22 @@
+*
+{
+    box-sizing:border-box;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    margin: auto;
+    width: 100%;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+    margin: auto;
+}
+
+.imgPanorama
+{
+    margin: auto;
+    border-radius: 50px;
+}

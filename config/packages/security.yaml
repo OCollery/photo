@@ -1,0 +1,32 @@
+security:
+    providers:
+        our_db_provider:
+            entity:
+                class: App\Entity\Utilisateur
+                property: mail
+    firewalls:
+        main:
+            pattern: ^/
+            provider: our_db_provider
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+
+            logout_on_user_change: true
+            logout:
+                path: logout
+                target: /
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+
+
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: bcrypt
+
+    access_control:
+    - { path: ^/admin_, roles: ROLE_ADMIN }
+    - { path: ^/profile, roles: ROLE_USER }
