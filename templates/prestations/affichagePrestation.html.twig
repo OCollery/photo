@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ prestation.nom }} | {{ parent() }}{% endblock %}
+
+
+{% block panorama %}
+    {% include 'inc/panorama.html.twig' %}
+{% endblock %}
+
+
+{% block main %}
+<div id="divGeneralePrestation">
+<div class="col-xs-offset-1 col-xs-10">
+    <h2>Séance {{ prestation.nom }}</h2>
+</div>
+
+{# Affichage des tarifs #}
+<div class="divTarifPresta col-xs-12">
+    {% for formule in formules %}
+        {% if formule.noPrestation.id == prestation.id and prestation.menuDeroulant == false %}
+            <div class="card border-secondaryPresta mb-3 col-xs-3" >
+                <div class="card-header">{{ formule.noFormule.nom }}</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ formule.prix }} €</h4>
+                    <p class="card-text col-xs-12">{{ formule.detail}}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <div>
+        <a href="{{ path('packPrestation') }}">Voir les Packs</a>
+    </div>
+
+
+
+    {# AFFICHAGE CARTE CADEAU #}
+    <div class="card mb-3">
+        <h5 class="card-title">Carte cadeaux*</h5>
+        <div class="divImgCarteCadeau">
+            <img class="imgCarteCadeau" src="{{ asset('image/carteCadeau.jpeg') }}">
+            <p class="card-text">
+                Envie de faire plaisir à un proche!<br>
+                Pensez à la carte cadeau.<br>
+                La façon la plus simple de faire plaisir sans se tromper
+            </p>
+        </div>
+        <div class="card-footer text-muted">
+            *Valable 1 an, d'un montant d'une formule au choix
+        </div>
+    </div>
+
+
+
+
+    {% if prestation.menuDeroulant == true %}
+        <div class="centerElement">
+            <h2>
+                Prestation sur devis
+            </h2>
+        </div>
+        <div class="btnRenseignementDevis col-xs-offset-1 col-xs-10">
+            {% include 'inc/fenêtreModaleRenseignement.html.twig' %}
+        </div>
+
+
+    {% endif %}
+</div>
+
+
+<br>
+    {% set compteur = 0 %}
+    {% set nbrePhoto = 0 %}
+     <section>
+        <div>
+            <ul>
+                {# Affichage des photos de chaque prestation #}
+                {% for photo in photoPrestation  %}
+                    {% if photo.noPrestation.id == prestation.id %}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img alt="photo" class="imgPrestation col-xs-offset-1" src="image/prestation/{{ photo.filename }}">
+                            </li>
+                        </div>
+                        {% set compteur = compteur+1 %}
+                        {% set nbrePhoto = nbrePhoto+1 %}
+                    {% endif %}
+                    {# Affichage des commentaires #}
+                    {% include 'inc/insertionCommentairePrestation.html.twig' %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% if nbrePhoto == 0 %}
+        <div class="paragGallerieVide col-xs-offset-1 col-xs-10">
+            <p id="gallerieVide">
+                Galerie en cours de création
+                <br>
+                Rendez-vous très vite!
+            </p>
+        </div>
+    {% endif %}
+</div>
+    {% include 'inc/boutonRetourHautPage.html.twig' %}
+{% endblock %}
