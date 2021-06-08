@@ -1,0 +1,129 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Choix affichage commentaires{% endblock %}
+
+{% block main %}
+<h1>Choix affichage commentaires</h1>
+
+    {% set compteur = 0 %}
+
+<div>
+        <h2>{{ prestation.nom }}</h2>
+
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th> Date séance </th>
+                    <th> Nom </th>
+                    <th> Prénom </th>
+                    <th> Commentaire </th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for commentaire in commentaires %}
+                {% if commentaire.noSeance.noPrestation.id == prestation.id%}
+                    <tr>
+                        <td>{{ commentaire.noSeance.date | date('d/m/Y') }}</td>
+                        <td>{{ commentaire.noUtilisateur.nom }}</td>
+                        <td>{{ commentaire.noUtilisateur.prenom }}</td>
+                        <td>{{ commentaire.commentaire }}</td>
+                        <td>
+                            <form action="{{ path('admin_choixNumeroCommentaire',{'id':commentaire.id,'prestationId':prestation.id}) }}">
+                                <button class="btn btn-primary">Choisir numéro d'affichage</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% set compteur = compteur+1 %}
+                {% endif %}
+            {% endfor %}
+
+            {# Permet d'ajouter les commentaires anonymes à la suite des commentaires classiques #}
+        {#     {% for commentaireAnonyme in commentairesAnonymes %}
+                {% if commentaireAnonyme.noPrestation.id == prestation.id%}
+                    <tr>
+                        <td>{{ commentaireAnonyme.dateSeance | date('d/m/Y') }}</td>
+                        <td>{{ commentaireAnonyme.nom }}</td>
+                        <td>{{ commentaireAnonyme.prenom }}</td>
+                        <td>{{ commentaireAnonyme.commentaire }}</td>
+                        <td>
+                            <form action="{{ path('admin_choixNumeroCommentaireAnonyme',{'id':commentaireAnonyme.id,'prestationId':prestation.id}) }}">
+                                <button class="btn btn-primary">Choisir numéro d'affichage</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% set compteur = compteur+1 %}
+                {% endif %}
+            {% endfor %}#}
+
+
+            </tbody>
+        </table>
+        {% if compteur == 0 %}
+            <p>Il n'y a pas de commentaires pour cette prestation</p>
+        {% endif %}
+        {% set compteur = 0 %}
+        <hr>
+</div>
+
+<div>
+    <h2>Commentaire présents dans la prestation</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th>Commentaire</th>
+                <th>Numéro commentaire</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set compteur = 1 %}
+            {% for commentaire in commentaires %}
+                {% if commentaire.noSeance.noPrestation.id == prestation.id %}
+                    <tr>
+                        {% if commentaire.numeroCommentaire == compteur %}
+                            <td>{{ commentaire.commentaire }}</td>
+                            <td>{{ compteur }}</td>
+                            <td>
+                                <form action="{{ path('admin_retirerAffichageCommentaire',{'id':commentaire.id,'prestationId':prestation.id} )}}">
+                                    <button class="btn btn-primary">Retirer de la prestation</button>
+                                </form>
+                            </td>
+                        {% endif %}
+                    </tr>
+                    {% set compteur = compteur + 1 %}
+                {% endif %}
+            {% endfor %}
+
+        {# Ajoute les commentaires anonymes à la suite des commentaire classiques #}
+    {#     {% for commentaireAnonyme in commentairesAnonymes %}
+            {% if commentaireAnonyme.noPrestation.id == prestation.id %}
+                <tr>
+                    {% if commentaireAnonyme.numeroCommentaire == compteur %}
+                        <td>{{ commentaireAnonyme.commentaire }}</td>
+                        <td>{{ compteur }}</td>
+                        <td>
+                            <form action="{{ path('admin_retirerAffichageCommentaire',{'id':commentaireAnonyme.id,'prestationId':prestation.id} )}}">
+                                <button class="btn btn-primary">Retirer de la prestation</button>
+                            </form>
+                        </td>
+                    {% endif %}
+                </tr>
+                {% set compteur = compteur + 1 %}
+            {% endif %}
+        {% endfor %}#}
+
+
+        </tbody>
+    </table>
+</div>
+<hr>
+<div class="col-xs-offset-1 col-xs-10">
+    <div class="col-xs-5">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="col-xs-offset-2 btn btn-primary" type="submit">Choisir un numéro d'affichage</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

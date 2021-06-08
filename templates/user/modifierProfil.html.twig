@@ -1,0 +1,21 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Modifier mon profil | {{ parent() }}{% endblock %}
+
+
+{% block main %}
+    <br>
+<div class="col-xs-offset-1" id="modifierProfil">
+    {{ form_start(editForm) }}
+    {{ form_widget(editForm) }}
+
+    <div class="col-xs-offset-2 col-xs-2">
+        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    </div>
+    {{ form_end(editForm) }}
+    <form action="{{ path('monCompte') }}">
+        <button class="btn btn-primary col-xs-offset-2"> Annuler </button>
+    </form>
+</div>
+
+{% endblock %}

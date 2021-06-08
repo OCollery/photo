@@ -1,0 +1,18 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Mon compte | {{ parent() }}{% endblock %}
+
+
+{% block main %}
+<div class="divMenuUser col-xs-offset-1">
+    <div>
+        <h1>Mes photos</h1>
+    </div>
+
+    {% for seance in seances %}
+        <div>
+            <h2>Séance du <a href="{{ path('mesPhotosSeance',{'id':seance.id}) }}">{{ seance.date | date('d/m/Y') }}</a></h2>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

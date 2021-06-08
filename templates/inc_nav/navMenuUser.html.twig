@@ -1,0 +1,27 @@
+<nav class=" navbar-expand-lg col-xs-offset-1 col-xs-10 {# navbar-dark bg-primary #}">
+    {#<div class="collapse navbar-collapse col-xs-offset-2" id="navbarColor01">#}{# DECALLER ICI POUR CENTRER #}
+        <ul class="navbar-nav mr-auto">
+            <li class = "nav-item">
+                <a class="glyphicon glyphicon-home nav-link" href="{{ path('home') }}"> </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('priseRDV')}}"> Demande de rendez-vous </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('monCompte')}}">Mon compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('mesSeances')}}">Mes séances</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('mesPhotos')}}">Mes photos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('commentaire') }}">Laisser un commentaire</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('logout') }}">Se déconnecter</a>
+            </li>
+        </ul>
+    </div>
+</nav>

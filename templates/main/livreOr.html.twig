@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre d'or | {{ parent() }}{% endblock %}
+
+{% block panorama %}
+{% include 'inc/panorama.html.twig' %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="col-xs-offset-1 col-xs-10">
+    <h2>Livre d'or</h2>
+    {% include 'inc/fenêtreModaleLaisserAvis.html.twig' %}
+</div>
+
+<div class="divLivreOr">
+    {%  for commentaire in commentaires %}
+        <div class="divCommentaireLivre col-xs-6">
+            <blockquote class="blockquote">
+                <p class="mb-0 col-xs-6">{{ commentaire.commentaire }}</p>
+                <footer class="blockquote-presta-footer col-xs-12">
+                   <p>{{ commentaire.nom }} {{ commentaire.prenom }} Séance du {{ commentaire.date | date('d/m/Y') }}</p>
+                </footer>
+            </blockquote>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="divLivreOr">
+    {% for commentaireAnonyme in commentairesAnonymes %}
+        <div class="divCommentaireLivre col-xs-6">
+            <blockquote class="blockquote">
+                {% if commentaireAnonyme.filename != null %}
+                    <img class="col-xs-6" src="image/commentaire/{{ commentaireAnonyme.filename }}">
+                {% endif %}
+                <p class="mb-0 col-xs-6">{{ commentaireAnonyme.commentaire}}.</p>
+                <footer class="blockquote-presta-footer col-xs-12">
+                    {{ commentaireAnonyme.prenom }}.{{ commentaireAnonyme.nom |slice(0, 1)}}<br>
+                    Séance {{ commentaireAnonyme.noPrestation.nom }} du {{ commentaireAnonyme.dateSeance | date('d/m/Y') }}
+                </footer>
+            </blockquote>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

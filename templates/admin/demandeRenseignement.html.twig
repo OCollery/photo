@@ -1,0 +1,64 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Demandes de renseignements{% endblock %}
+
+{% block main %}
+<div class="divMenuUser">
+    <div class="col-xs-offset-1">
+        <h1>Demandes de renseignements</h1>
+    </div>
+
+        {% set compteur = 0 %}
+    <div class="essaitab col-xs-12">
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th>Date renseignement</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Mail</th>
+                    <th>Séance souhaitée</th>
+                    <th>Prestation</th>
+                    <th>Formule</th>
+                    <th colspan="2">Détail du projet</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for renseignement in renseignements %}
+                {% if renseignement.noEtatRenseignement == etatAttente %}
+                <tr>
+                    <td>{{ renseignement.dateRenseignement | date('d/m/Y') }}</td>
+                    <td>{{ renseignement.nom }}</td>
+                    <td>{{ renseignement.prenom }}</td>
+                    <td>{{ renseignement.telephone }}</td>
+                    <td>{{ renseignement.mail }}</td>
+                    <td>{{ renseignement.dateSeance | date('d/m/Y') }}</td>
+                    <td>{{ renseignement.noPrestation.nom }}</td>
+                    <td>{{  renseignement.noFormule.nom}}</td>
+                    <td colspan="2">{{ renseignement.detailProjet }}</td>
+                    <td>
+                        <form action="{{ path('admin_creerUtilisateurSeanceRenseignement',{'id':renseignement.id}) }}">
+                            <button class="btn btn-primary"> Valider la séance et créer un client </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ path('admin_archiverRenseignement',{'id':renseignement.id}) }}">
+                            <button class="btn btn-primary"> Archiver </button>
+                        </form>
+                    </td>
+                </tr>
+                    {% set compteur = compteur + 1 %}
+            {% endif %}
+        {% endfor %}
+            </tbody>
+        </table>
+            {% if compteur == 0 %}
+                <p>
+                    Aucune demande de renseignement en attente
+                </p>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}

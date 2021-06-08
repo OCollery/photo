@@ -1,0 +1,39 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Supprimer des comptes{% endblock %}
+
+{% block main %}
+<h1>Supprimer des comptes</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th> Nom </th>
+            <th> Prénom </th>
+            <th> Date de naissance </th>
+            <th> Téléphone </th>
+            <th> Mail </th>
+            <th> Rue </th>
+            <th> Ville </th>
+            <th> Code postal </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.dateNaissance | date('d/m/Y') }}</td>
+                <td>{{ utilisateur.telephone }}</td>
+                <td>{{ utilisateur.mail }}</td>
+                <td>{{ utilisateur.rue }}</td>
+                <td>{{ utilisateur.ville }}</td>
+                <td>{{ utilisateur.codePostal }}</td>
+                <td><a href="{{ path('admin_supprimerCompteUtilisateur',{'id':utilisateur.id}) }}">Supprimer compte client</a></td>
+            </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

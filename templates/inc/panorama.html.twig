@@ -1,0 +1,28 @@
+<div class="slideshow-container col-xs-12">
+    {% for photo in photos %}
+        <div class="mySlides col-xs-12">
+            <img class="imgPanorama col-xs-offset-1 col-xs-10" src="image/panorama/{{ photo.filename }}">
+
+        </div>
+    {% endfor %}
+</div>
+
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides()
+    {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++)
+        {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 5000); // l'image change toute les 5 secondes
+    }
+</script>

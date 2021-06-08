@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace utilisateur | {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/panorama.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block panorama %}{% endblock %}
+
+{% block nav %}
+    {% include 'inc_nav/navMenuUser.html.twig' %}
+{% endblock %}
+
+{% block main %}
+<div class="divMenuUser">
+
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="footerUser">
+    <h3>Elodie Simon - Créatrice de souvenirs</h3>
+    <br>
+    Copyright &copy; 2021 - <?php echo date('Y');?> ElodieSimon - Créatrice de souvenirs.
+    <br>
+    Tout droits réservés
+</div>
+{% endblock %}

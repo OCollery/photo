@@ -1,0 +1,158 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Valider les demandes{% endblock %}
+
+{% block main %}
+
+    {% set compteurSeance = 0 %}
+    {% set compteurCommentaire = 0 %}
+
+<div class="tableValiderCommentaire col-xs-offset-1">
+    <h1>Valider un rendez-vous</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>Date souhaitée</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Prestation</th>
+            <th>Formule</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+   {% for seance in seances %}
+       {% if seance.noEtatSeance.id == attente %}
+           <tr>
+               <td>{{ seance.date | date('d/m/Y')}}</td>
+               <td>{{ seance.noUtilisateur.nom }}</td>
+               <td>{{ seance.noUtilisateur.prenom }}</td>
+               <td>{{ seance.noPrestation.nom }}</td>
+               <td>{{ seance.noFormuleIntitule.nom }}</td>
+               <td>
+                   <form action="{{ path('admin_validerSeance',{'id':seance.id}) }}">
+                       <button class="btn btn-primary"> Valider </button>
+                   </form>
+               </td>
+               <td>
+                   <form action="{{ path('admin_refuserSeance',{'id':seance.id}) }}">
+                       <button class="btn btn-primary"> Refuser </button>
+                   </form>
+               </td>
+           </tr>
+            {% set compteurSeance = compteurSeance+1 %}
+       {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+    {% if compteurSeance == 0 %}
+        <p>
+            Aucune séance à valider
+        </p>
+    {% endif %}
+</div>
+
+<hr class="col-xs-12">
+
+<div class="tableValiderCommentaire col-xs-offset-1">
+    <h1>Valider un commentaire</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th>Séance du:</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Prestation</th>
+                <th>Commentaire déposé</th>
+                <th>Photo</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commentaire in commentaires %}
+                {% if commentaire.noEtat.id == attente %}
+                    <tr>
+                        <td>{{ commentaire.noSeance.date | date('d/m/Y') }}</td>
+                        <td>{{ commentaire.noUtilisateur.nom }}</td>
+                        <td>{{ commentaire.noUtilisateur.prenom }}</td>
+                        <td>{{ commentaire.noSeance.noPrestation.nom }}</td>
+                        <td>{{ commentaire.commentaire }}</td>
+                        {% if commentaire.filename != null %}
+                            <td><img class="imgCommentaireAdmin" src="image/commentaire/{{ commentaire.filename }}"></td>
+                        {% endif %}
+                        <td>
+                            <form action="{{ path('admin_validerCommentaire',{'id':commentaire.id,'seanceId':commentaire.noSeance.id}) }}">
+                                <button class="btn btn-primary"> Valider </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ path('admin_refuserCommentaire',{'id':commentaire.id,'seanceId':commentaire.noSeance.id}) }}">
+                                <button class="btn btn-primary"> Refuser </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% set compteurCommentaire = compteurCommentaire+1 %}
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if compteurCommentaire == 0 %}
+        <p>
+            Aucun commentaire à valider
+        </p>
+    {% endif %}
+</div>
+    <hr class="col-xs-12">
+
+<div class="tableValiderCommentaire col-xs-offset-1">
+    <h1>Valider un commentaire pour le Livre d'or</h1>
+
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-primary">
+            <th>Séance du:</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Prestation</th>
+            <th>Commentaire déposé</th>
+            <th>Photo</th>
+            <th colspan="2">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for commentaireAnonyme in commentairesAnonymes %}
+            {% if commentaireAnonyme.noEtat.id == attente %}
+                <tr>
+                    <td>{{ commentaireAnonyme.dateSeance | date('d/m/Y') }}</td>
+                    <td>{{ commentaireAnonyme.nom }}</td>
+                    <td>{{ commentaireAnonyme.prenom }}</td>
+                    <td>{{ commentaireAnonyme.noPrestation.nom }}</td>
+                    <td>{{ commentaireAnonyme.commentaire }}</td>
+                    {% if commentaireAnonyme.filename != null %}
+                        <td><img class="imgCommentaireAdmin" src="image/commentaire/{{ commentaireAnonyme.filename }}"></td>
+                    {% endif %}
+                    <td>
+                        <form action="{{path('admin_validerCommentaireAnonyme',{'id':commentaireAnonyme.id}) }}">
+                            <button class="btn btn-primary"> Valider </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="#">
+                            <button class="btn btn-primary"> Refuser </button>
+                        </form>
+                    </td>
+                </tr>
+                {% set compteurCommentaire = compteurCommentaire+1 %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if compteurCommentaire == 0 %}
+        <p>
+            Aucun commentaire à valider
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

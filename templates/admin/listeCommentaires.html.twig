@@ -1,0 +1,37 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Liste des commentaires{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1">
+    <h1>Liste des commentaires</h1>
+</div>
+<hr>
+<div class="tableAjouterPhotoUtilisateur col-xs-offset-1">
+
+
+<div class="tableAjouterPhoto col-xs-offset-1">
+    <h2>Ajouter commentaires à une prestation</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <td>Prestation</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prestation in prestations %}
+            <tr>
+                <td>{{ prestation.nom }}</td>
+                <td>
+                    <form action="{{ path('admin_choixAffichageCommentaire',{'id':prestation.id}) }}">
+                        <button class="btn btn-primary">Ajouter commentaires</button>
+                    </form>
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+<nav class=" navbar-expand-lg col-xs-offset-1 col-xs-10 {# navbar-dark bg-primary #}">
+    {# <div class="collapse navbar-collapse" id="navbarColor01"> #}{# DECALLER ICI POUR CENTRER #}
+        <ul class="navbar-nav mr-auto">
+
+            <li class = "nav-item">
+                <a class="glyphicon glyphicon-home nav-link" href="{{ path('home') }}"> </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prestation</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li class="lien-dropdown">
+                            <a class="dropdown-item-nav" href="{{ path('admin_ajouterPrestation') }}"> Ajouter prestation </a>
+                        </li>
+                        <li class="lien-dropdown">
+                            <a class="dropdown-item-nav" href="{{ path('admin_listPrestation') }}">Modifier prestations</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Formule</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li class="lien-dropdown">
+                            <a class="dropdown-item-nav" href="{{ path('admin_ajouterFormule') }}"> Ajouter formule </a>
+                        </li>
+                        <li class="lien-dropdown">
+                            <a class="dropdown-item-nav" href="{{ path('admin_listFormule') }}">Modifier formules</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_ajouterPhoto') }}">Ajouter photos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_modifierPanorama') }}">Panorama</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Séances et Commentaires</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li class="lien-dropdown">
+                            <a class="dropdown-item-nav" href="{{ path('admin_valider') }}">Valider RDV et commentaires</a>
+                        </li>
+                        <li class="lien-dropdown">
+                            <a class="dropdown-item-nav" href="{{ path('admin_listeChoixCommentaire') }}">Choix affichage commentaire</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_gererRenseignement') }}">Demandes de renseignements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_historiqueSeance') }}">Historique des séances</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_afficherCompteUtilisateur') }}">Supprimer Utilisateur</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,111 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Mes photos | {{ parent() }}{% endblock %}
+
+{% block main %}
+{% set compteur = 0 %}
+
+<div class="col-xs-offset-1">
+    <div>
+        <h1>Mes photos</h1>
+    </div>
+    <div>
+        <h2>séance du: {{ seance.date | date('d/m/Y')}}</h2>
+    </div>
+
+    <h3>Photo de la séance</h3>
+    <section class="col-xs-12">
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if seance.id == photo.noRendezVous.id and photo.noEtat == etatAttente and photo.telechargeable != true%}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img class="imgPrestation col-xs-offset-1" src="image/utilisateur/{{ photo.filename }}">
+                                <a href="{{ path('photoChoisi',{'id':photo.id,'seanceId':seance.id}) }}">Choisir</a>
+                            </li>
+                        </div>
+                        {% set compteur = compteur+1 %}
+                    {% endif %}
+                {% endfor %}
+                {% if compteur == 0 and seance.date < date() %}
+                    <div class="col-xs-offset-1">
+                        <p>Photos en cours de préparation</p>
+                    </div>
+                    <br>
+                {% elseif compteur == 0 and seance.date > date() %}
+                    <div class="col-xs-offset-1">
+                        <p>Cette séance n'a pas encore eu lieu</p>
+                    </div>
+                    <br>
+                {% endif %}
+                {% set compteur = 0 %}
+            </ul>
+        </div>
+    </section>
+    <hr class="col-xs-12">
+
+    <h3>Photo choisies</h3>
+    <section class="col-xs-12">
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if seance.id == photo.noRendezVous.id and photo.noEtat == etatChoisi and photo.telechargeable != true%}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img class="imgPrestation col-xs-offset-1" src="image/utilisateur/{{ photo.filename }}">
+                                <a href="{{ path('photoRetire',{'id':photo.id,'seanceId':seance.id}) }}">Retirer</a>
+                            </li>
+                        </div>
+                        {% set compteur = compteur+1 %}
+                    {% endif %}
+                {% endfor %}
+                {% if compteur == 0 and seance.date < date() %}
+                    <div class="col-xs-offset-1">
+                        <p>Photos en cours de préparation</p>
+                    </div>
+                    <br>
+                {% elseif compteur == 0 and seance.date > date() %}
+                    <div class="col-xs-offset-1">
+                        <p>Cette séance n'a pas encore eu lieu</p>
+                    </div>
+                    <br>
+                {% endif %}
+                {% set compteur = 0 %}
+            </ul>
+        </div>
+    </section>
+    <hr class="col-xs-12">
+
+    <h3>Photo téléchargeable</h3>
+    <section class="col-xs-12">
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if seance.id == photo.noRendezVous.id and photo.telechargeable == true %}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img class="imgPrestation col-xs-offset-1" src="image/utilisateur/{{ photo.filename }}">
+                                <a href="image/utilisateur/{{ photo.filename }}" download>télécharger la photo</a>
+                            </li>
+                        </div>
+                        {% set compteur = compteur+1 %}
+                    {% endif %}
+                {% endfor %}
+                {% if compteur == 0 and seance.date < date() %}
+                    <div class="col-xs-offset-1">
+                        <p>Photos en cours de préparation</p>
+                    </div>
+                    <br>
+                {% elseif compteur == 0 and seance.date > date() %}
+                    <div class="col-xs-offset-1">
+                        <p>Cette séance n'a pas encore eu lieu</p>
+                    </div>
+                    <br>
+                {% endif %}
+                {% set compteur = 0 %}
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

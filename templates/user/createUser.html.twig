@@ -1,0 +1,35 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Créer un compte | {{ parent() }}{% endblock %}
+
+
+{% block panorama %}{% endblock %}
+
+{% block main %}
+<div>
+    <div class="col-xs-offset-1">
+        <h1>Créér un compte</h1>
+    </div>
+    <div class="divCreerCompte">
+
+        {{ form_start(createForm) }}
+
+        {{ form_row(createForm.nom) }}
+        {{ form_row(createForm.prenom) }}
+        <label class="col-xs-offset-2">Date de naissance:</label>{{ form_row(createForm.dateNaissance) }}
+        {{ form_row(createForm.telephone) }}
+        {{ form_row(createForm.mail) }}
+        {{ form_row(createForm.rue) }}
+        {{ form_row(createForm.ville) }}
+        {{ form_row(createForm.codePostal) }}
+        {{ form_row(createForm.motPasse) }}
+
+        <button type="submit" class="btn btn-primary col-xs-offset-2 col-xs-3">Valider</button>
+        {{ form_end(createForm) }}
+
+        <form action="{{ path('home') }}">
+            <button class="btn btn-primary col-xs-offset-1 col-xs-2">Annuler</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

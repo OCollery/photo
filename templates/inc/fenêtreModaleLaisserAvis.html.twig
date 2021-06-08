@@ -1,0 +1,37 @@
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="container col-xs-4">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAvis">Laisser un avis</button>
+
+    <!-- Modal -->
+     <div class="modal fade" id="myModalAvis" role="dialog">
+         <div class="modal-dialog">
+
+            <!-- Modal content-->
+              <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title">Laisser un avis</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                    <div class="modal-body">
+                    {{ form_start(formCommentaire)}}
+                    {{ form_widget(formCommentaire) }}
+                    <button class="btn btn-primary" type="submit">Valider</button>
+                    {{ form_end(formCommentaire) }}
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                       </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

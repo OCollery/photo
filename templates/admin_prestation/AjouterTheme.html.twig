@@ -1,0 +1,19 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Ajouter prestation{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1 ajouterPrestation">
+    <h1>Ajouter prestation</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary col-xs-offset-2"> Créer une prestation </button>
+    {{ form_end(form) }}
+</div>
+
+    <div class="form-group">
+        <label for="formFile" class="form-label mt-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exemple d'entrée de fichier par défaut</font></font></label>
+        <input class="form-control" type="file" id="formFile">
+    </div>
+{% endblock %}

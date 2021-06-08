@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion | {{ parent() }}{% endblock %}
+
+{% block panorama %}{% endblock %}
+
+{% block main %}
+<div class="divMainLogin">
+    <fieldset class="mainLogin col-xs-offset-4 col-xs-4">
+        <h1>Connexion</h1>
+         <div>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">pseudo ou mot de passe incorrect</div>
+            {% endif %}
+
+        </div>
+        <form action="{{ path('login') }}" method="POST">
+            <div>
+                <div class="col-xs-offset-3"><input id="mail" name="_username" type="text" placeholder="Mail"></div><br>
+            </div>
+            <div>
+                <div class="col-xs-offset-3"><input id="password" name="_password" type="password" placeholder="Mot de passe"></div>
+            </div>
+            <div class="checkbox mb-3 col-xs-offset-3">
+                <label>
+                    <input type="checkbox" name="_remember_me">Se souvenir de moi
+                </label>
+
+            </div>
+            <a class="lienLogin col-xs-offset-3" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a><br>
+            <br>
+            <button type = "submit" class = "btn btn-primary col-xs-offset-3">
+                 Connexion
+            </button>
+        </form>
+        <a class="lienLogin col-xs-offset-3" href="{{ path('createUser') }}"> Créer un compte </a>
+    </fieldset>
+</div>
+{% endblock %}
+

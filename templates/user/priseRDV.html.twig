@@ -1,0 +1,33 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Prise de rendez-vous | {{ parent() }}{% endblock %}
+
+{% block main %}
+<div class="divMenuUser">
+    <div class="col-xs-offset-1">
+        <h1>Demande de rendez-vous</h1>
+    </div>
+
+    {{ form_start(rendezVousForm) }}
+    <div class="col-xs-offset-1" id="formRDV">
+        <div>
+            {{ form_row(rendezVousForm.date) }}
+        </div>
+         <div>
+                {{ form_row(rendezVousForm.noPrestation)}}
+         </div>
+        <div>
+            {{ form_row(rendezVousForm.noFormuleIntitule) }}
+        </div>
+        <div class="col-xs-offset-2 col-xs-2">
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+        {{ form_end(rendezVousForm) }}
+        <form action="{{ path('menuUser') }}">
+            <button class="btn btn-primary col-xs-offset-2">Annuler</button>
+        </form>
+        <br>
+    </div>
+</div>
+    <br>
+{% endblock %}

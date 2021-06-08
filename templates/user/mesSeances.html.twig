@@ -1,0 +1,77 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Mes séances | {{ parent() }}{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1">
+    <h1>Mes séances</h1>
+</div>
+
+    {% set compteur = 0 %}
+
+<div class="col-xs-offset-1 divMesSeances">
+    <h2>Séances en attente de validation</h2>
+
+    {% for seance in seance %}
+        {% if user == seance.noUtilisateur.id and seance.date > date() and seance.noEtatSeance.id == etatAttente%}
+            <div>
+                <label>Séance du: </label> {{ seance.date | date('d/m/Y')}}<br>
+                <label>Prestation effectuée: </label> {{ seance.noPrestation.nom }}<br>
+                <label>Tarif de le prestation: </label> {{ seance.noFormule.prix }}
+            </div>
+            <br>
+            {% set compteur = compteur+1 %}
+        {% endif %}
+    {% endfor %}
+    {% if compteur == 0 %}
+        {{ "Vous n'avez pas séance en attente de validation" }}
+    {% endif %}
+</div>
+
+<hr>
+<div class="col-xs-offset-1 divMesSeances">
+    <h2>Séances à venir</h2>
+
+    {% for seance in seance %}
+        {% if user == seance.noUtilisateur.id and seance.date > date() and seance.noEtatSeance.id == etatConfirme%}
+            <div>
+                <label>Séance du: </label> {{ seance.date | date('d/m/Y')}}<br>
+                <label>Prestation: </label> {{ seance.noPrestation.nom }}<br>
+                <label>Formule: </label> {{ seance.noFormuleIntitule }}<br>
+                <a href="pdf/{{ seance.noPrestation.filename }}" download>Télécharger</a>
+            </div>
+            <br>
+            {% set compteur = compteur+1 %}
+        {% endif %}
+    {% endfor %}
+    {% if compteur == 0 %}
+        {{ "Vous n'avez pas séance à venir" }}
+    {% endif %}
+</div>
+
+
+<hr>
+<div class="col-xs-offset-1 divMesSeances">
+    <h2>Séances passées</h2>
+
+    {% for seance in seance %}
+        {% if user == seance.noUtilisateur.id and seance.date < date() and seance.noEtatSeance.id == etatConfirme%}
+            <div>
+                <label>Séance du: </label> {{ seance.date | date('d/m/Y')}}<br>
+                <label>Prestation: </label> {{ seance.noPrestation.nom }}<br>
+                <label>Formule: </label> {{ seance.noFormuleIntitule }}<br>
+            </div>
+            <br>
+            {% set compteur = compteur+1 %}
+        {% endif %}
+    {% endfor %}
+    {% if compteur == 0 %}
+        {{ "Vous n'avez efféctué aucune séance" }}
+    {% endif %}
+</div>
+
+
+
+
+    {# date du jour: {{ "now" | date('d/m/Y')}} #}
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Ajouter des photos{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1">
+    <h1>Ajouter des photos</h1>
+</div>
+
+<div class="col-xs-offset-1">
+    <h3>{{ utilisateur.nom }} {{ utilisateur.prenom }}
+    <br>
+    Séance du {{ seance.date | date('d/m/Y') }}</h3>
+<br>
+    <div class="divAjouterPhotoUser">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class= "btn btn-primary col-xs-offset-2" type="submit">Ajouter photo</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+    <hr>
+<div class="col-xs-offset-1">
+    <h2>Photos déjà enregistré</h2>
+</div>
+
+    <h3>Photo proposée</h3>
+    <section class="col-xs-12">
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if utilisateur.id == photo.noUtilisateur.id and seance.date == photo.noRendezVous.date and photo.noEtat == etatAttente and photo.telechargeable == false %}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img class="imgPrestation col-xs-offset-1" src="image/utilisateur/{{ photo.filename }}">
+                                <a href="{{ path('admin_supprimerPhotoUtilisateur',{'id':photo.id,'seanceId':photo.noRendezVous.id}) }}">Supprimer</a>
+                            </li>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <h3>Photo choisie</h3>
+    <section class="col-xs-12">
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if utilisateur.id == photo.noUtilisateur.id and seance.date == photo.noRendezVous.date and photo.noEtat == etatChoisi %}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img class="imgPrestation col-xs-offset-1" src="image/utilisateur/{{ photo.filename }}">
+                                <a href="{{ path('admin_supprimerPhotoUtilisateur',{'id':photo.id,'seanceId':photo.noRendezVous.id}) }}">Supprimer</a>
+                            </li>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <h3>Photo téléchargeable</h3>
+    <section class="col-xs-12">
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if utilisateur.id == photo.noUtilisateur.id and seance.date == photo.noRendezVous.date and photo.telechargeable == true %}
+                        <div class="avatar col-xs-2">
+                            <li class="liPrestation">
+                                <img class="imgPrestation col-xs-offset-1" src="image/utilisateur/{{ photo.filename }}">
+                                <a href="{{ path('admin_supprimerPhotoUtilisateur',{'id':photo.id,'seanceId':photo.noRendezVous.id}) }}">Supprimer</a>
+                            </li>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

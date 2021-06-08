@@ -1,0 +1,72 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Historique des séances{% endblock %}
+
+{% block main %}
+<h1>Historique des séances</h1>
+
+    <h2>Séance à venir</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-primary">
+            <th> Date séance </th>
+            <th> Nom </th>
+            <th> Préom </th>
+            <th> Prestation </th>
+            <th> Formule </th>
+            <th> Commentaire </th>
+            <th> Etat séance </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for seance in seances %}
+            {% if seance.noEtatSeance.id == etatConfirme %}
+                <tr>
+                    <td>{{ seance.date | date('d/m/Y') }}</td>
+                    <td>{{ seance.noUtilisateur.nom }}</td>
+                    <td>{{ seance.noUtilisateur.prenom }}</td>
+                    <td>{{ seance.noPrestation.nom }}</td>
+                    <td>{{ seance.noFormuleIntitule.nom }}</td>
+                    <td>{{ seance.noEtatCommentaire.etat }}</td>
+                    <td>{{ seance.noEtatSeance.etat }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Séances archivées</h2>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th> Date séance </th>
+            <th> Nom </th>
+            <th> Préom </th>
+            <th> Prestation </th>
+            <th> Formule </th>
+            <th> Commentaire </th>
+            <th> Etat séance </th>
+            <th> Désarchiver séance </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for seance in seances %}
+        {% if seance.noEtatSeance.id == etatArchive %}
+            <tr>
+                <td>{{ seance.date | date('d/m/Y') }}</td>
+                <td>{{ seance.noUtilisateur.nom }}</td>
+                <td>{{ seance.noUtilisateur.prenom }}</td>
+                <td>{{ seance.noPrestation.nom }}</td>
+                <td>{{ seance.noFormuleIntitule.nom }}</td>
+                <td>{{ seance.noEtatCommentaire.etat }}</td>
+                <td>{{ seance.noEtatSeance.etat }}</td>
+                <td><a href="{{ path('admin_desarchiverSeance',{'id':seance.id}) }}">Désarchiver</a></td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

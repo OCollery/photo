@@ -1,0 +1,75 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Ajouter des photos{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1">
+    <h1>Ajouter des photos</h1>
+</div>
+<hr>
+<div class="tableAjouterPhotoUtilisateur col-xs-offset-1">
+
+    <h2>Ajouter photo séance</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th>Date séance</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Prestation</th>
+                <th>Formule</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seance in seances %}
+            {% if seance.noUtilisateur.id == seance.noUtilisateur.id and seance.noEtatSeance == etatConfirme%}
+                <tr>
+                    <td>{{ seance.date | date('d/m/Y') }}</td>
+                    <td>{{ seance.noUtilisateur.nom }}</td>
+                    <td>{{ seance.noUtilisateur.prenom }}</td>
+                    <td>{{ seance.noPrestation }}</td>
+                    <td>{{ seance.noFormuleIntitule.nom }}</td>
+                    <td>
+                        <form action="{{ path('admin_ajoutPhotoUtilisateur',{'id':seance.id}) }}">
+                            <button class="btn btn-primary">Ajouter photos</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ path('admin_archiverSeance',{'id':seance.id}) }}">
+                            <button class="btn btn-primary">Archiver séance</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <hr>
+<div class="tableAjouterPhoto col-xs-offset-1">
+    <h2>Ajouter photos à une prestation</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <td>Prestation</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prestation in prestations %}
+            <tr>
+                <td>{{ prestation.nom }}</td>
+                <td>
+                    <form action="{{ path('admin_ajoutPhotoPrestation',{'id':prestation.id}) }}">
+                        <button class="btn btn-primary">Ajouter photos</button>
+                    </form>
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

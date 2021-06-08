@@ -1,0 +1,36 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Ajouter des photos{% endblock %}
+
+{% block main %}
+<div class="divAjouterPhotoPresta col-xs-offset-1">
+    <h1>Ajouter des photos</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class = "btn btn-primary col-xs-offset-2" type="submit">Ajouter photo</button>
+    {{ form_end(form) }}
+</div>
+    <hr>
+<div class="col-xs-offset-1">
+    <h2>Photos déjà enregistré</h2>
+</div>
+
+    <section>
+        <div>
+            <ul>
+                {% for photo in photos %}
+                    {% if photo.noPrestation.id == prestation.id %}
+                        <div class="avatar col-xs-2">
+                            <li class=" liPrestation">
+                                <img class="imgPrestation" src="image/prestation/{{ photo.filename }}">
+                                <a href="{{ path('admin_supprimerPhotoPrestation',{'id':photo.id,'prestationId':photo.noPrestation.id}) }}">Supprimer</a>
+                            </li>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+

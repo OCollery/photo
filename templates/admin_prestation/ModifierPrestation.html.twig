@@ -1,0 +1,49 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Modifier prestations{% endblock %}
+
+{% block main %}
+
+<div class="tableModifierPrestation col-xs-offset-1 col-xs-10">
+    <h1>Modifier prestation</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th>Prestation</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%  for prestation in prestations %}
+                <tr>
+                    <td>{{ prestation.nom }}</td>
+                    <td>
+                        <form action="{{ path('admin_modifierPrestation',{'id':prestation.id}) }}">
+                            <button class="btn btn-primary"> Modifier </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ path('admin_supprimerPrestation',{'id':prestation.id}) }}">
+                            <button class="btn btn-primary"> Supprimer prestation </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<hr class="col-xs-12">
+
+<div class="col-xs-offset-1 col-xs-10">
+    <div class="ajouterPrestation">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary  col-xs-offset-2"> Modifier </button>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+{% endblock %}

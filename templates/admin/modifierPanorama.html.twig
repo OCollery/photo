@@ -1,0 +1,33 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Modifier panorama{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1">
+    <h1>Modifier panorama</h1>
+    <div class="divModifierPanorama">
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+        <button class="btn btn-primary col-xs-offset-2" type="submit">Ajouter photo</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+    <br>
+<hr>
+<section>
+    <div>
+        <ul>
+            {% for photo in photos %}
+                <div class="avatarModifierPanorama col-xs-6">
+                    <li class="liPanorama">
+                        <img class="imgModifierPanorama" src="image/panorama/{{ photo.filename }}">
+                        <a href="{{ path('admin_supprimerPhotoPanorama',{'id':photo.id}) }}">Supprimer</a>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endblock %}

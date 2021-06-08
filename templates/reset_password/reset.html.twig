@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{%  block panorama %}{% endblock %}
+{% block nav %}{% endblock %}
+{% block title %}Reset your password{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1 col-xs-10">
+    <h1>Tapez votre nouveau mot de passe</h1>
+    <div class="col-xs-5">
+        {{ form_start(resetForm) }}
+            {{ form_row(resetForm.plainPassword) }}
+            <button class="btn btn-primary">Enregistrer nouveau mot de passe</button>
+        {{ form_end(resetForm) }}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'admin/MenuAdmin.html.twig' %}
+
+{% block title %}Ajouter formule{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1 ajouterPrestation">
+    <h1>Ajouter formule</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary col-xs-offset-2"> Créer une formule </button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+

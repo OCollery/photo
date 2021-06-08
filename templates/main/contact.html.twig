@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact | {{ parent() }}{% endblock %}
+
+{% block panorama %}
+    {% include 'inc/panorama.html.twig' %}
+{% endblock %}
+
+{% block main %}
+<div class="col-xs-offset-1 col-xs-10">
+    <h1>Elodie Simon</h1>
+    <div class="col-xs-4">
+        <p>
+            Rue XXXXXXX<br>
+            27016 Les Andelys<br>
+            Tél: <br>
+            Mail: elodie-simon-creatricedesouvenirs<br>
+            <br>
+            Contactez-moi<br>
+            "Je ferai en sorte<br>
+            d'immortaliser<br>
+            vos moments de vie"
+        </p>
+    </div>
+</div>
+    <div class="col-xs-offset-1 col-xs-10">
+        {% include 'inc/fenêtreModaleRenseignement.html.twig' %}
+    </div>
+
+    <div class="photoMap col-xs-offset-1 col-xs-10">
+        <img src="{{ asset('image/contact/map adresse exemple.png') }}">
+    </div>
+{% endblock %}

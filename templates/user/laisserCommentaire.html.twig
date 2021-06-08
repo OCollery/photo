@@ -1,0 +1,25 @@
+{% extends 'user/MenuUser.html.twig' %}
+
+{% block title %}Laisser un commentaire | {{ parent() }}{% endblock %}
+
+{% block main %}
+<div class="divMenuUser col-xs-offset-1">
+    <h1>Laisser un commentaire</h1>
+
+    {%  set compteurSeance = 0 %}
+
+    {% for seance in seances %}
+        {% if user == seance.noUtilisateur.id and seance.noEtatCommentaire == etatNull and seance.noEtatSeance.id == etatConfirme and date() > seance.date%}
+            <label class="labelLaisserCommentaire col-xs-3">- Séance du {{ seance.date |date('d/m/Y') }}: </label>
+            <form action="{{ path('editCommentaire',{'id':seance.id}) }}">
+                <button class="btn btn-primary col-xs-2"> Partagez votre expérience </button>
+            </form>
+            <br>
+            {% set compteurSeance = compteurSeance + 1 %}
+        {% endif %}
+    {% endfor %}
+    {% if compteurSeance == 0 %}
+        <p>Vous n'avez aucune séance à commenter</p>
+    {% endif %}
+</div>
+{% endblock %}

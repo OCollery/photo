@@ -1,0 +1,32 @@
+{% for commentaire in commentaires %}
+    {% if commentaire.noEtat == etatPublie and commentaire.noSeance.noPrestation.id == photo.noPrestation.id%}
+        {% if compteur == 16 and commentaire.numeroCommentaire == 1
+            or compteur == 28 and commentaire.numeroCommentaire == 2
+            or compteur == 48 and commentaire.numeroCommentaire == 3
+            or compteur == 60 and commentaire.numeroCommentaire == 4
+            or compteur == 70 and commentaire.numeroCommentaire == 5
+            or compteur == 82 and commentaire.numeroCommentaire == 6
+            or compteur == 104 and commentaire.numeroCommentaire == 7
+            or compteur == 114 and commentaire.numeroCommentaire == 8
+            or compteur == 126 and commentaire.numeroCommentaire == 9
+            or compteur == 136 and commentaire.numeroCommentaire == 10
+            or compteur == 148 and commentaire.numeroCommentaire == 11
+            or compteur == 158 and commentaire.numeroCommentaire == 12
+            or compteur == 170 and commentaire.numeroCommentaire == 13
+            or compteur == 180 and commentaire.numeroCommentaire == 14
+            or compteur == 192 and commentaire.numeroCommentaire == 15
+        %}
+            <div class="divCommentaire col-xs-4">
+                <blockquote class="blockquote">
+                    <p class="mb-0">{{ commentaire.commentaire}}.</p>
+                    <footer class="blockquote-presta-footer">
+                        {{ commentaire.noUtilisateur.prenom }}.{{ commentaire.noUtilisateur.nom |slice(0, 1)}}
+                    </footer>
+                    <div class="divModale">
+                        {% include 'inc/fenêtreModaleRenseignement.html.twig' %}
+                    </div>
+                </blockquote>
+            </div>
+         {% endif %}
+    {% endif %}
+{% endfor %}
