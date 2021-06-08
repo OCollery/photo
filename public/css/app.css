@@ -1,0 +1,635 @@
+/*Général*/
+.lien
+{
+    color: #D36E70;
+}
+
+p
+{
+    font-family:"Lucida Calligraphy";
+    font-size: 20px;
+    color: #D36E70;
+    margin: auto;
+    width: 60%;
+}
+
+h1
+{
+    margin: auto;
+    width: 60%;
+}
+
+div h2
+{
+    font-family: "Lucida Calligraphy";
+}
+
+div h3
+{
+    font-family: "Lucida Calligraphy";
+}
+
+
+header
+{
+   /* background-color: #FEE2E1;*/
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table
+{
+    width: 50%;
+    border-collapse: collapse;
+}
+
+.flashes .flash {
+    padding: 20px;
+    background-color: dodgerblue;
+    color: #FFF;
+    font-size: 24px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.flashes .flash-success {
+    background-color: #718C00;
+}
+
+.flashes .flash-error {
+    background-color: #AA3333;
+}
+
+/************************************/
+
+
+/*Modale*/
+
+.divModale
+{
+    text-align: left;
+}
+
+.modaleRenseignement
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/************************************/
+
+
+/*Nav*/
+
+#navPrincipale
+{
+    margin: auto;
+    width: 60%;
+}
+
+.navbar-expand-lg
+{
+    text-align: center;
+}
+
+.nav-link
+{
+    color: #D36E70;
+}
+
+.navbar-nav
+{
+    font-family: "Comic Sans MS";
+    font-style: italic;
+    font-size: 1.1em;
+    margin: auto;
+    width: 100%;
+}
+
+
+.dropdown:hover .dropdown-menu
+{
+    display: block;
+    background-color: #EB6864;
+}
+
+.dropdown-item-nav
+{
+    color: #FAD9D8;
+}
+
+.lien-dropdown
+{
+    list-style-type: none;
+}
+
+
+/************************************/
+
+
+/*Accueil*/
+
+.siteTitle
+{
+    margin: auto;
+    width: 100%;
+    height: 250px;
+    background-color: #FEE2E1;
+    text-align: center;
+}
+
+#logoSite
+{
+    width: 50%;
+}
+
+.imgAccueil:hover
+{
+    opacity: 0.5;
+}
+
+.imgAccueil
+{
+    width: 15%;
+    border-radius: 50%;
+}
+
+.paragAccueil
+{
+    height: 300px;
+}
+
+.divImgAccueil
+{
+    text-align: center;
+    height: 500px;
+}
+
+
+.divLienPresta
+{
+    margin: 100px;
+}
+.lienPresta:hover
+{
+    text-decoration: none;
+    color: white;
+    font-size: 4em;
+    font-style: italic;
+}
+.lienPresta
+{
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    font-style: italic;
+}
+.conteneurLienPrestaNaissance
+{
+    background-image: url("../image/accueil/naissance.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.conteneurLienPrestaGrossesse
+{
+    background-image: url("../image/accueil/grossesse.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.conteneurLienPrestaSitter
+{
+    background-image: url("../image/accueil/sitter.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.conteneurLienPrestaEnfant
+{
+    background-image: url("../image/accueil/enfant.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.conteneurLienPrestaFamille
+{
+    background-image: url("../image/accueil/famille.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.conteneurLienPrestaSmash
+{
+    background-image: url("../image/accueil/smash.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.conteneurLienPrestaPack
+{
+    background-image: url("../image/accueil/pack.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+/************************************/
+
+/*Prestation*/
+
+.centerElement
+{
+    text-align: center;
+}
+
+.avatar
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+.imgPrestation
+{
+    width: 80%;
+    border: 1rem solid #D36E70;
+}
+
+.liPrestation
+{
+    list-style-type: none;
+}
+
+.blockquote-presta-footer
+{
+    font-size: 1.5em;
+    color: white;
+    text-align: left;
+}
+
+.blockquote
+{
+    margin-top: 50px;
+}
+
+.divCommentaire
+{
+    height: 350px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.divTarifPresta
+{
+    margin-bottom: 50px;
+}
+.border-secondaryPresta
+{
+    height: 400px;
+    margin-bottom: 500px;
+}
+
+.card-header
+{
+    font-size: 5em;
+}
+
+.card-title
+{
+    font-size: 2em;
+    text-align: center;
+}
+
+
+.paragGallerieVide
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 1rem solid #D36E70;
+    text-align: center;
+}
+
+#gallerieVide
+{
+    font-size: 2em;
+}
+
+.divImgCarteCadeau
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 40%;
+    border: 1rem solid #D36E70;
+}
+
+.mb-3
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgCarteCadeau
+{
+    width: 60%;
+    height: 350px;
+}
+
+.card-text
+{
+    text-align: center;
+}
+
+.btnRenseignementDevis
+{
+    display: flex;
+    align-content: center;
+}
+
+.divPackPresta
+{
+    display: flex;
+    align-content: center;
+}
+
+/************************************/
+
+/*Contact*/
+
+.photoMap
+{
+    margin: 10px;
+}
+/************************************/
+
+/*Login*/
+
+.divMainLogin
+{
+    background-image: url('../image/login/IMG_7838.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #D36E70;
+    padding: 400px;
+    width: 100%;
+    border: 10px solid blue;
+}
+
+.mainLogin
+{
+
+    background: rgba(211, 110, 112, 0.6);
+    margin: auto;
+   /* width: 40%;*/
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.lienLogin
+{
+    color: black;
+}
+
+.divCreerCompte
+{
+    height: 600px;
+    width: 40%;
+}
+
+
+
+/************************************/
+
+/*livre d'or*/
+
+
+
+.divCommentaireLivre
+{
+    margin: auto;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#modalAvis
+{
+    width: 450px;
+}
+/************************************/
+
+/*Footer*/
+
+footer
+{
+    background-color: #FEE2E1;
+}
+
+#footer
+{
+   text-align: center;
+}
+
+
+.btnRenseignement
+{
+    color: #D36E70;
+    border-radius: 5px;
+}
+
+/************************************/
+
+/*User*/
+
+#formRDV
+{
+    width: 20%;
+}
+
+.dateRDV
+{
+    font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+}
+
+.divMonCompte
+{
+    width: 30%;
+    font-size: 1.5em;
+}
+
+
+button a
+{
+    color: white;
+}
+
+#modifierProfil
+{
+    width: 50%;
+}
+
+.divMesSeances
+{
+    font-size: 1.5em;
+}
+
+#divLaisserCommentaire
+{
+    width: 30%;
+}
+
+.labelLaisserCommentaire
+{
+    font-size: 2em;
+}
+
+.footerUser
+{
+    text-align: center;
+    width: 100%;
+    height: 150px;
+    background-color: #FEE2E1;
+}
+
+.divMenuUser
+{
+    height: 500px;
+}
+/************************************/
+
+/*Admin*/
+
+.imgAjoutPrestation
+{
+    margin: auto;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.liAjoutPrestation
+{
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+.divValiderSeance
+{
+    width: 60%;
+}
+
+.commentaireAValider
+{
+    width: 50%;
+}
+
+.ajouterPrestation
+{
+    width: 40%;
+    height: 450px;
+}
+
+.divModifierPrestation
+{
+    border: 2px solid black;
+    width: 30%;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.tableAjouterPhotoUtilisateur
+{
+    width: 600px;
+}
+
+.tableAjouterPhoto
+{
+    width: 450px;
+}
+
+.divModifierPanorama
+{
+    width: 40%;
+}
+
+.avatarModifierPanorama
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.imgModifierPanorama
+{
+    width:80%;
+    border: 1rem solid #D36E70;
+}
+
+.liPanorama
+{
+    list-style-type: none;
+}
+
+.tableValiderCommentaire
+{
+    width: 950px;
+}
+
+.divAjouterPhotoUser
+{
+    width: 40%;
+}
+
+.divAjouterPhotoPresta
+{
+    width: 40%;
+}
+
+.imgCommentaireAdmin
+{
+    width: 50%;
+}
+
+
+
